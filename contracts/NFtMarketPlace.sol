@@ -2,10 +2,9 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 import "./ERC721Metadata.sol";
-import "./ERC721.sol";
- 
+import "./ERC721Enumrable.sol" ; 
 
-contract NFtMarketPlace is ERC721Metadata ,  ERC721{
+contract NFtMarketPlace is ERC721Metadata ,ERC721Enumrable{
 
     // declare List That Hold All My NFTs
     string [] nftLists ;

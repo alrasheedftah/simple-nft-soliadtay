@@ -14,8 +14,8 @@ contract ERC721{
     //Create Event Take Address to And From And TokenId and set all param indexed to be searchable 
     event Transfare(address indexed from ,address indexed to ,uint256 indexed tokenId);
 
-    // This Metode Make The Token NFT And Send Or Assign To Ownder
-    function _mint(address to, uint256 tokenId) internal{
+    // This Metode Make The Token NFT And Send Or Assign To Ownder  // add the Virual Cuz I Want To Override This Method
+    function _mint(address to, uint256 tokenId) internal virtual{
 
         // Firstly I Need To Check The Valid Address Not equals The the address(0) 
         require(to !=  address(0) , "Sorry Cannot Mint To Address 0 ");
