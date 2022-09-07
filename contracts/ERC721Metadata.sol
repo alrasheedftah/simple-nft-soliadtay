@@ -20,7 +20,7 @@ contract ERC721Metadata is IERC721Metadata, ERC165 {
         ));
 
     }
-
+ 
     function name() external view  override returns (string memory){
         return _name;
     }
