@@ -2,8 +2,9 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 import "./ERC721.sol";
+import "./interfaces/IERC721Enumrable.sol";
 
-contract ERC721Enumrable is ERC721{
+contract ERC721Enumrable is ERC721 , IERC721Enumrable{
    
    // Hold All Token And Represent The Total Supply
    uint256 [] private _allTokens;
@@ -36,23 +37,23 @@ contract ERC721Enumrable is ERC721{
         _allTokens.push(tokenId);
     }
 
+
 //    / define function that return the number of mints NFT  
-   function getTotalSupplay() external view returns(uint256){
-    
+   function getTotalSupplay() public view override returns(uint256){
     return _allTokens.length;
    }
 
 
    // get Token By Index 
-   function getTokenByIndex(uint256 index) public view returns(uint256){
-
+   function getTokenByIndex(uint256 index) public override view returns(uint256){
+    require(index < getTotalSupplay()," Wrong Index");
     return _allTokens[index];
    }
 
 
-   function getTokenOfOwnerByIndex(address owner,uint256 index) public view returns(uint256){
+   function getTokenOfOwnerByIndex(address owner,uint256 index) public override view returns(uint256){
 
-        _ownedTokens[owner][index]; //  return like from this tokens array  [1,2,4,3]  returned 2 
+      return  _ownedTokens[owner][index]; //  return like from this tokens array  [1,2,4,3]  returned 2 
    }
 
    function _addTokenToHisOwner(address to,uint256 tokenId) private{
