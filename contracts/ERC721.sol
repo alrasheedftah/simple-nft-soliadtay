@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
+import "./interfaces/ERC721Interface.sol";
 
-contract ERC721{
+contract ERC721 is ERC721Interface{
 
     // map to store tokenOwners 
     mapping(uint256 => address ) private _tokenOwners;
@@ -12,7 +13,7 @@ contract ERC721{
 
 
     //Create Event Take Address to And From And TokenId and set all param indexed to be searchable 
-    event Transfare(address indexed from ,address indexed to ,uint256 indexed tokenId);
+    // event Transfare(address indexed from ,address indexed to ,uint256 indexed tokenId);
 
     // This Metode Make The Token NFT And Send Or Assign To Ownder  // add the Virual Cuz I Want To Override This Method
     function _mint(address to, uint256 tokenId) internal virtual{
@@ -44,7 +45,7 @@ contract ERC721{
 
      // Know How Token For Owner Address
 
-     function balanceOf(address _owner) external view returns (uint256){
+     function balanceOf(address _owner) external view override returns (uint256){
         //validation The Address Not Equals Address(0)
         require(_owner != address(0)," Wrong Address Or Not Available" );
 
@@ -54,7 +55,7 @@ contract ERC721{
      }
 
      // get Owner For Current TokenId 
-     function ownerOf(uint256 _tokenId) external view returns(address){
+     function ownerOf(uint256 _tokenId) external view override returns(address){
         address _owner = _tokenOwners[_tokenId];
         require(_owner != address(0)," Wrong Address Or Not Available" );
         // get Address For The Current TokenId 
