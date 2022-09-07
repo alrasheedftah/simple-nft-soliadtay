@@ -3,7 +3,7 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "./ERC721Metadata.sol";
 import "./ERC721.sol";
-
+ 
 
 contract NFtMarketPlace is ERC721Metadata ,  ERC721{
 
