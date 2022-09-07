@@ -2,14 +2,22 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 import "./interfaces/ERC721Interface.sol";
-
-contract ERC721 is ERC721Interface{
+import "./ERC165.sol";
+contract ERC721 is ERC721Interface ,ERC165 {
 
     // map to store tokenOwners 
     mapping(uint256 => address ) private _tokenOwners;
 
     // Maping To Save How Oner Owned Amount Of Token
     mapping(address => uint256) private _tokenOwnerOwned;
+
+    constructor(){
+        _registerInterface(bytes4(keccak256('balanceOf(bytes4)') ^
+        keccak256('ownerOf(bytes4)') 
+        
+        ));
+
+    }
 
 
     //Create Event Take Address to And From And TokenId and set all param indexed to be searchable 

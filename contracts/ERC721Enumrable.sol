@@ -19,6 +19,16 @@ contract ERC721Enumrable is ERC721 , IERC721Enumrable{
    // add all token to represent or refrences by index 
    mapping(uint256 => uint256 ) private _allTokenByIndex;
 
+
+    constructor(){
+        _registerInterface(bytes4(keccak256('getTotalSupplay(bytes4)') ^
+        keccak256('getTokenByIndex(bytes4)') ^ 
+        keccak256('getTokenOfOwnerByIndex(bytes4)') 
+
+        ));
+    }
+
+
     // Override For The _mint Function Tha in ERC721 as mean Should add ovverid And Mention The Parrent Class 
     function _mint(address to,uint256 tokenId) internal override(ERC721){
         // call The _mint in  Parent Class ERC721     

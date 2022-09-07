@@ -16,7 +16,8 @@ contract NFtMarketPlace is ERC721Metadata ,ERC721Enumrable{
 
 
     constructor () ERC721Metadata("MyNftMarketplace","Test"){
-
+        _registerInterface(bytes4(keccak256('mint(bytes4)') 
+        ));
     }
 
     function mint(string memory metadataUrl) public{

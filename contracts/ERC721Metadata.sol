@@ -3,7 +3,9 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "./interfaces/IERC721Metadata.sol";
 
-contract ERC721Metadata is IERC721Metadata {
+import "./ERC165.sol";
+
+contract ERC721Metadata is IERC721Metadata, ERC165 {
     string private _name ;
 
     string private _symbol;
@@ -11,6 +13,12 @@ contract ERC721Metadata is IERC721Metadata {
     constructor(string memory newName,string memory newSymbol){
         _name = newName;
         _symbol = newSymbol; 
+
+        _registerInterface(bytes4(keccak256('name(bytes4)') ^
+        keccak256('symbol(bytes4)') 
+
+        ));
+
     }
 
     function name() external view  override returns (string memory){
