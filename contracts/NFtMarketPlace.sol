@@ -7,7 +7,7 @@ import "./ERC721Enumrable.sol" ;
 contract NFtMarketPlace is ERC721Metadata ,ERC721Enumrable{
 
     // declare List That Hold All My NFTs
-    string [] nftLists ;
+     string [] public nftLists ;
 
     // maping to check if metatdata exeists or not 
     mapping(string => bool ) _nftsMetadataExsits;
@@ -15,7 +15,7 @@ contract NFtMarketPlace is ERC721Metadata ,ERC721Enumrable{
     string public decsription  = "MyNFT Marketplace To Upload Some Images ";
 
 
-    constructor () ERC721Metadata("MyNftMarketplace","Test"){
+    constructor () ERC721Metadata("MyNftMarketplace","NFTS"){
         _registerInterface(bytes4(keccak256('mint(bytes4)') 
         ));
     }
